@@ -13,7 +13,7 @@ The ML-BallCollector project is a simple machine learning project designed for a
 ---
 Green platform means agent successed, red that agent or ball fall down from the platform.
 <!-- Video with animation what model does -->
-https://github.com/ikolton/ML-BallCollector/assets/96392714/7d1867ef-62bb-4eb1-b904-a2ada5c38d2f
+![Ball_in_a_hole-2024-06-06-13-29-46](https://github.com/ikolton/ML-BallCollector/assets/96392714/5dbd106a-50ee-4cd3-afbf-681387965cad)
 
 <!-- important links -->
 **Useful links for setup**
