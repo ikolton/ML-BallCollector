@@ -5,8 +5,6 @@ using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 
 
-//rewards for the agent are from getting closer to the ball and scoring a goal
-
 public class PlayerAgent : Agent
 {
     Rigidbody rBody;
@@ -41,13 +39,6 @@ public class PlayerAgent : Agent
             rBody.velocity = rBody.velocity.normalized * maxSpeed;
         }
 
-        //if velocity is too low penalize the agent
-        /*if (rBody.velocity.magnitude < 0.1)
-        {
-            //AddReward(-0.00005f);
-            //debug log out reward
-            Debug.Log(GetCumulativeReward());
-        }*/
         //log out velocity
         //Debug.Log(rBody.velocity);
 
@@ -61,10 +52,7 @@ public class PlayerAgent : Agent
         //check by distance
         if (Vector3.Distance(BallTran.localPosition, GoalTran.localPosition) < 4f)
         {
-            //1st training reward
             SetReward(10.0f);
-            //2nd training reward
-            //AddReward(10.0f);
 
 
             //set win Material
@@ -82,8 +70,10 @@ public class PlayerAgent : Agent
         if (This.localPosition.y < 0 || BallTran.localPosition.y < 0)
         {
             SetReward(-10.0f);
+
             //set lose Material
             groundMesh.material = loseMaterial;
+
             //log out reward
             //Debug.Log("Fell off");
             //Debug.Log(GetCumulativeReward());
@@ -91,12 +81,7 @@ public class PlayerAgent : Agent
         }
 
 
-    }
-
-    
-
-
-    
+    }    
 
     private void RandomizePositiom()
     {
@@ -135,7 +120,7 @@ public class PlayerAgent : Agent
         //zero agent velocity
         rBody.velocity = Vector3.zero;
     }
-
+    
     public override void CollectObservations(VectorSensor sensor)
     {
         // Ball and Goal positions
@@ -152,39 +137,21 @@ public class PlayerAgent : Agent
     }
 
     private float forward;
+    
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
         // Actions, size = 2, add forward force and rotate
         //forward force
-        //float
         forward = actionBuffers.ContinuousActions[0];
-        //rotate
+        //rotation
         float rotate = actionBuffers.ContinuousActions[1];
 
         rBody.AddForce(transform.forward * forward * forceMultiplier);
 
 
-        //alternative movement based on position and not force
-        //move game object forward
-        //transform.position += transform.forward * forward * forceMultiplier * Time.deltaTime;
-
-
-
         //rotate game object local y axis
         transform.Rotate(transform.up * rotate * rotationSpeed);
 
-
-
-        //Reward for getting closer to the ball
-        //AddReward(-0.00003f * Vector3.Distance(This.localPosition, BallTran.localPosition));
-
-
-        /*//Penalty for not moving
-        //Debug.Log(forward);
-        if (forward >= 0.2 && forward <= -0.2)
-        {
-            AddReward(-0.0001f);
-        }*/
 
         //reward for moving based on forward velocity
         if(rBody.velocity.magnitude > 0.1f && forward > 0.05f)
@@ -205,7 +172,7 @@ public class PlayerAgent : Agent
     }
 
 
-
+    //For manual control
     public override void Heuristic(in ActionBuffers actionsOut)
     {
         var continuousActionsOut = actionsOut.ContinuousActions;
