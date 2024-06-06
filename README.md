@@ -56,7 +56,7 @@ For playing with project follow [Making a New Learning Environment](https://unit
 ### Part in Unity:
 First step was to create a good learning environment and agent to learn within it. One training are consists of the orange Agent, Ball, Target Area and Platform.
 
-At the beggining of each episode Target Area and Ball are spawned at random positions. Agent is spawned in the middle of the platform.
+At the beggining of each episode Target Area and Ball are spawned at random positions to prevent overfitting. Agent is spawned in the middle of the platform.
 ```code
 //ball and Goal spawn in random position on the field
 RandomizePositiom();
@@ -146,9 +146,18 @@ if (Vector3.Distance(BallTran.localPosition, GoalTran.localPosition) < 4f)
 ### Algorithm configuration
 *Files mentioned in this section are located in FinalLearningSetup directory*
 
-Reinforcment learning algorithm chosen for the learning process was PPO due to it's speed (SAC was also tested with mixed results). PPO used rewards showed above for optimalization. To improve learning process to PPO was added [Curiosity](https://pathak22.github.io/noreward-rl/) which encourages the model to take more varied actions. Apart from that two limitation learning methods were applied to jump start the learning process - Behavioral Cloning and Gail. Both LR methods used [BallCollector.demo](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollector.demo) file with a few recorded succesful runs controlled by player. Whole configuration can be found in [BallCollectorBCGlowCur.yaml](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollectorBCGlowCur.yaml) file.
+Reinforcment learning algorithm chosen for the learning process was PPO due to it's speed (SAC was also tested but was too slow). PPO used rewards showed above for optimalization. To improve learning process to PPO was added [Curiosity](https://pathak22.github.io/noreward-rl/) which encourages the model to take more varied actions. Apart from that two limitation learning methods were applied to jump start the learning process - Behavioral Cloning and Gail. Both LR methods used [BallCollector.demo](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollector.demo) file with a few recorded succesful runs controlled by player. Whole configuration can be found in [BallCollectorBCGlowCur.yaml](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollectorBCGlowCur.yaml) file.
 
 ### Learning run
 
 ![Zrzut ekranu 2024-06-06 131306](https://github.com/ikolton/ML-BallCollector/assets/96392714/ee56455e-3757-4b81-91d5-15a864ce0eef)
 ![Zrzut ekranu 2024-06-06 131321](https://github.com/ikolton/ML-BallCollector/assets/96392714/b661cd85-2218-4f44-9f32-619d8ea46c5c)
+
+
+With 10 being a reward for getting ball to the target area, model getting around 9 means very high success rate with most of the penalty being time penalty.
+
+
+**Future Prospects**
+---
+
+To prevent overfitting some ramdomization of the environment was already introduced. However more complicated training areas such as labirynths with adding to the model sensors to collect data by "looking" could lead to intresting more results. 
