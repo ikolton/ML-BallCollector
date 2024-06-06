@@ -1,0 +1,65 @@
+{
+    "BallCollector": {
+        "checkpoints": [
+            {
+                "steps": 22999918,
+                "file_path": "results\\BCGlowCur\\BallCollector\\BallCollector-22999918.onnx",
+                "reward": 9.522368500107213,
+                "creation_time": 1717606991.627625,
+                "auxillary_file_paths": [
+                    "results\\BCGlowCur\\BallCollector\\BallCollector-22999918.pt"
+                ]
+            },
+            {
+                "steps": 23499962,
+                "file_path": "results\\BCGlowCur\\BallCollector\\BallCollector-23499962.onnx",
+                "reward": 6.183333446582158,
+                "creation_time": 1717607637.0726838,
+                "auxillary_file_paths": [
+                    "results\\BCGlowCur\\BallCollector\\BallCollector-23499962.pt"
+                ]
+            },
+            {
+                "steps": 23999985,
+                "file_path": "results\\BCGlowCur\\BallCollector\\BallCollector-23999985.onnx",
+                "reward": 8.600904805319649,
+                "creation_time": 1717608270.8577902,
+                "auxillary_file_paths": [
+                    "results\\BCGlowCur\\BallCollector\\BallCollector-23999985.pt"
+                ]
+            },
+            {
+                "steps": 24499919,
+                "file_path": "results\\BCGlowCur\\BallCollector\\BallCollector-24499919.onnx",
+                "reward": 9.597000122070312,
+                "creation_time": 1717608908.9847214,
+                "auxillary_file_paths": [
+                    "results\\BCGlowCur\\BallCollector\\BallCollector-24499919.pt"
+                ]
+            },
+            {
+                "steps": 24761450,
+                "file_path": "results\\BCGlowCur\\BallCollector\\BallCollector-24761450.onnx",
+                "reward": null,
+                "creation_time": 1717609303.0092967,
+                "auxillary_file_paths": [
+                    "results\\BCGlowCur\\BallCollector\\BallCollector-24761450.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 24761450,
+            "file_path": "results\\BCGlowCur\\BallCollector.onnx",
+            "reward": null,
+            "creation_time": 1717609303.0092967,
+            "auxillary_file_paths": [
+                "results\\BCGlowCur\\BallCollector\\BallCollector-24761450.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.3.0+cu121"
+    }
+}
