@@ -150,3 +150,5 @@ Reinforcment learning algorithm chosen for the learning process was PPO due to i
 
 ### Learning run
 
+![Zrzut ekranu 2024-06-06 131306](https://github.com/ikolton/ML-BallCollector/assets/96392714/ee56455e-3757-4b81-91d5-15a864ce0eef)
+![Zrzut ekranu 2024-06-06 131321](https://github.com/ikolton/ML-BallCollector/assets/96392714/b661cd85-2218-4f44-9f32-619d8ea46c5c)
