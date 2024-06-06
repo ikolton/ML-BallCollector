@@ -7,7 +7,7 @@ Simple ML project for Introduction To AI class made with ML-Agents
 ---
 The ML-BallCollector project is a simple machine learning project designed for an Introduction to AI class. The project involves training a model to control an orange square bracket shaped object to collect a ball and put it in a target area using ML-Agents. The goal is to maximize the reward by collecting the ball as fast as possible and putting it in the target area without agent or ball falling of the platform.
 
-*note that project was made while having injured so unclean code or other issues might occur due to minimizing the time to create the project*
+*note that project was made while having injured wrist so unclean code or other issues might occur due to minimizing the time to create the project*
 
 **Preview**
 ---
