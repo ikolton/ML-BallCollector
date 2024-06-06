@@ -20,11 +20,29 @@ https://github.com/ikolton/ML-BallCollector/assets/96392714/7d1867ef-62bb-4eb1-b
 ---
 
 - [ML-Agents Toolkit installation](https://unity-technologies.github.io/ml-agents/Installation/) is needed to run anything.
-- [Unity installation](https://docs.unity3d.com/Manual/GettingStartedInstallingUnity.html) is needed to run the project in editor but probably not for running the model with .exe build.
+- [Unity installation](https://docs.unity3d.com/Manual/GettingStartedInstallingUnity.html) is needed to run the project in editor but probably not for running the model with .exe build. 
 
 
 <!--How to run tought model with inference and comman for it-->
+**Getting Started**
+---
+1. Setup mlagents according to [ML-Agents Toolkit installation](https://unity-technologies.github.io/ml-agents/Installation/)
+2. Clone the repository 
+```sh
+ git clone https://github.com/ikolton/ML-BallCollector
+ ```
+ 3. Navigate to FinalLearningSetup folder
+   
+4. To see model in action run this command:
+
+
 ```sh
 mlagents-learn BallCollectorBCGlowCur.yaml --run-id=BCGlowCur --env=BuildsForRewTimePen/Ball_in_a_hole --inference --resume --width=1024 --height=1024 --time-scale=5
-<!-- Setup Unity Procject-->
 ```
+5. To check the tensorboard run this command:
+```sh
+tensorboard --logdir results --port 6006
+```
+and then open in web browser localhost:6006
+<!-- Setup Unity Procject-->
+
