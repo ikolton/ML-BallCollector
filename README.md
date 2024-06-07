@@ -183,7 +183,7 @@ I could get a precise count of successes and failures in unity.
 Success: 964 Ball or Agent fell down: 36 Time out: 0 Total: 1000
 Success rate: 96%
 ```
-Results were very satisfactory. To achieve higher success rate, more training would be needed. Zero time outs is also a good sign and show that model alway's tries to do something to succseed in the episode.
+Results were very satisfactory. To achieve higher success rate, more training would be needed. Zero time outs is also a good sign and shows that model always tries to do something to succeed in the episode.
 
 **Future Prospects**
 ---
