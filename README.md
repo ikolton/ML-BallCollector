@@ -5,7 +5,7 @@ Simple ML project for Introduction To AI class made with ML-Agents
 
 **Project Overview**
 ---
-The ML-BallCollector project is a simple machine learning project designed for an Introduction to AI class. The project involves training a model to control an orange square bracket shaped object to collect a ball and put it in a target area using ML-Agents. The goal is to maximize the reward by collecting the ball as fast as possible and putting it in the target area without agent or ball falling of the platform.
+The ML-BallCollector project is a simple machine learning project designed for an Introduction to AI class. The project involves training a model to control an *orange square bracket shaped object* to collect a ball and put it in a target area using ML-Agents. The goal is to maximize the reward by collecting the ball as fast as possible and putting it in the target area without agent or ball falling of the platform.
 
 *note that project was made while having injured wrist so unclean code or other issues might occur due to minimizing the time to create the project*
 
@@ -56,7 +56,7 @@ For playing with project follow [Making a New Learning Environment](https://unit
 ---
 
 ### Part in Unity:
-First step was to create a good learning environment and agent to learn within it. One training are consists of the orange Agent, Ball, Target Area and Platform.
+First step was to create a good learning environment and agent to learn within it. One training area consists of the orange Agent, Ball, Target Area and Platform.
 
 At the beggining of each episode Target Area and Ball are spawned at random positions to prevent overfitting. Agent is spawned in the middle of the platform.
 ```code
@@ -93,7 +93,7 @@ public override void CollectObservations(VectorSensor sensor)
 }
 ```
   
-which sums in total to the space of 12 observations.
+which sums in total to the space of 12 observations (since some variables are vectors).
 
 After analysing the observations model returns actions - 2 floats which are applied to rotate the Agent and move it forward and backward.
 
@@ -148,16 +148,42 @@ if (Vector3.Distance(BallTran.localPosition, GoalTran.localPosition) < 4f)
 ### Algorithm configuration
 *Files mentioned in this section are located in FinalLearningSetup directory*
 
-Reinforcment learning algorithm chosen for the learning process was PPO due to it's speed (SAC was also tested but was too slow). PPO used rewards showed above for optimalization. To improve learning process to PPO was added [Curiosity](https://pathak22.github.io/noreward-rl/) which encourages the model to take more varied actions. Apart from that two limitation learning methods were applied to jump start the learning process - Behavioral Cloning and Gail. Both LR methods used [BallCollector.demo](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollector.demo) file with a few recorded succesful runs controlled by player. Whole configuration can be found in [BallCollectorBCGlowCur.yaml](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollectorBCGlowCur.yaml) file.
+Reinforcment learning algorithm chosen for the learning process was PPO due to it's speed (SAC was also tested but was too slow on my machine). PPO used rewards showed above for optimalization. To improve learning process [Curiosity](https://pathak22.github.io/noreward-rl/) was added which encourages the model to take more varied actions. Apart from that, two limitation learning methods were applied to jump start the learning process - Behavioral Cloning and Gail. Both LR methods used [BallCollector.demo](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollector.demo) file with a few recorded succesful runs controlled by player. Whole configuration can be found in [BallCollectorBCGlowCur.yaml](https://github.com/ikolton/ML-BallCollector/blob/main/FinalLearningSetup/BallCollectorBCGlowCur.yaml) file.
 
 ### Learning run
-
+**Cumulative Reward**
 ![Zrzut ekranu 2024-06-06 131306](https://github.com/ikolton/ML-BallCollector/assets/96392714/ee56455e-3757-4b81-91d5-15a864ce0eef)
+**Episode Length**
 ![Zrzut ekranu 2024-06-06 131321](https://github.com/ikolton/ML-BallCollector/assets/96392714/b661cd85-2218-4f44-9f32-619d8ea46c5c)
 
 
 With 10 being a reward for getting ball to the target area, model getting around 9 means very high success rate with most of the penalty being time penalty.
 
+### Success rate
+By adding this code to the PlayerAgent.cs:
+```code
+private int successCount = 0;
+private int fallFailCount = 0;
+private int totalCount = 1000;
+private int currentCount = 0;
+```
+```code
+currentCount = CompletedEpisodes;
+Debug.Log(currentCount);
+if (currentCount == totalCount)
+{
+    Debug.Log("Success: " + successCount + " Ball or Agent fell down: " + fallFailCount + " Time out: " + (totalCount - successCount - fallFailCount) + " Total: " + currentCount);
+    Debug.Log("Success rate: " + (successCount * 100 / totalCount) + "%");
+}
+```
+I could get a precise count of successes and failures in unity.
+
+**Results**:
+```sh
+Success: 964 Ball or Agent fell down: 36 Time out: 0 Total: 1000
+Success rate: 96%
+```
+Results were very satisfactory. To achieve higher success rate, more training would be needed. Zero time outs are also a good sign and show that model alway's tries to do something to succseed in the episode.
 
 **Future Prospects**
 ---
